@@ -1,0 +1,71 @@
+一：
+1）reids安装：
+	1.安装完毕
+	2.redis路径下打开cmd，输入redis-server.exe redis.windows.conf（redis-server.exe为默认的）
+	3.reids路径下另开cmd，输入redis-cli.exe -h 127.0.0.1 -p 6379
+	4.设置键值对set myKey abc，取出键值对get myKey
+2）配置文件：Windows 名为 redis.windows.conf
+	1.查看CONFIG    GET    CONFIG_SETTING_NAME
+	2.设置CONFIG    SET    CONFIG_SETTING_NAME    NEW_CONFIG_VALUE
+	3.参数说明见菜鸟教程
+
+二：命令  COMMAND    KEY_NAME  （EXTRA）
+0）启动命令：
+	1.redis路径下打开cmd，输入redis-cli，链接本地redis服务
+	2.输入ping，返回pong，检测redis服务是否启动
+	3.远程链接redis服务，输入redis-cli -h host -p port -a password
+	4.避免中文乱码：--raw
+	补充：在redis路径下才能使用redis命令，连接redis服务的命令为redis-cli -h host -p port -a password，
+		本地连接简化为redis-cli
+1）对键命令：	SET runoobkey redis/DEL runoobkey
+2）对String命令：	SET key value/GET key
+3）对Hash命令：	HSET key field value/HGET key field		HDEL key field1 [field2]/HSETNX key field value 
+4）对List命令：	RPUSH key value1 [value2]/RPUSHX key value	LPOP key/LREM key count value		
+		LINDEX key index/LRANGE key start stop
+5）对Set命令：	增SADD key member1 [member2]		SMEMBERS key/SRANDMEMBER key [count]
+		删SREM key member1 [member2] 
+6）对zset命令：	增ZADD key score1 member1 [score2 member2] 	
+		查ZRANGE key start stop [WITHSCORES]/ZRANGEBYLEX key min max [LIMIT offset count]
+		 /ZRANGEBYSCORE key min max [WITHSCORES]/ [LIMIT] ZRANK key member
+		/ZSCORE key member 
+		删ZREM key member [member ...]
+7）对HyperLogLog命令：	PFADD key element [element ...] /PFCOUNT key [key ...] /PFMERGE destkey sourcekey [sourcekey ...] 
+8）对发布订阅命令：	SUBSCRIBE channel [channel ...]/PUBLISH channel message/UNSUBSCRIBE [channel [channel ...]]PUBSUB subcommand [argument [argument ...]] 
+	1.打开redis服务
+	2.连接redis服务（不区分远程和本地），作为发布者
+	3.另外开启cmd窗口，连接redis服务（不区分远程和本地），作为订阅者
+	4.订阅者输入命令subscribe redischat，连接reidschat频道
+	5.发布者输入命令publish redischat MASSAGE，订阅者会自动打印MASSAGE
+9）对事务命令：MULTI / EXEC / DISCARD / WATCH key [key ...] / UNWATCH
+10）对脚本命令：	
+11）连接命令：	
+12）服务器命令：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
