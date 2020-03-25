@@ -16,7 +16,7 @@
 * **git remote -v:**查看关联的远程仓库
 * (**git fetch，git rebase origin/master,git push origin master:master**合并文件)
 * (**git pull --rebase origin master:**合并文件)
-* **git push (-u) origin master:**推送到远程仓库
+* **git push (-u) origin master:master：**推送到远程仓库
 * github刷新查看
 
 ## 工作目录，暂存区，head（各分支不共用）
