@@ -40,7 +40,7 @@
 
 ### Java原生API事务
 
-* 适用：跨越多个事务管理源；入多个不同数据源
+* 适用：**跨越多个事务管理源；入多个不同数据源**
 * spring-mybatis文件中：
   * <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
             <property name="transactionManagerName" value="java:/TransactionManager" />

@@ -14,7 +14,7 @@
 
 ## 声明式事务
 
-* 参考https://www.baidu.com/s?wd=AOP&ie=utf-8
+* 参考https://blog.csdn.net/trigl/article/details/50968079
 
 ### 配置方式
 
@@ -157,5 +157,5 @@
 
 ### 一个声明式事务实例
 
-* 参考https://www.baidu.com/s?wd=AOP&ie=utf-8
+* 参考https://blog.csdn.net/trigl/article/details/50968079
 
