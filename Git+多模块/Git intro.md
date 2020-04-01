@@ -63,6 +63,7 @@
   * 查看秘钥：cat id_rsa.pub
 * 分支
   * **git branch**：查看分支
+  * **git branch --all：**查看所有分支，可能看到**本地的远程分支**
   * **git branch <branchname>**：创建新分支，新分支复制**当前分支**全部内容（？？当前分支还是master分支？？分支暂存区还是head内容）
   * **git checkout -b <branchname>**：创建新分支，并切换到该分支，复制内容
   * **git checkout <branchanme>**：切换分支

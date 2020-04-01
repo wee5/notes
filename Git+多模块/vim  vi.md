@@ -10,4 +10,4 @@
 
 ## vim键盘图
 
-* ![](H:\笔记—markdown注\Git+多模块\14006819-267a1b48d71fd2f2.png)
+* ![](H:\markdown笔记\Git+多模块\14006819-267a1b48d71fd2f2.png)

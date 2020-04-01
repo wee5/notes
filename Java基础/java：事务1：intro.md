@@ -23,28 +23,31 @@
 
 * **spring不直接管理事务，而是提供多种事务管理器；为不同的事务API提供一致的编程模型**
 
-### JDBC事务
 
-* spring-mybatis.xml文件中：
+
+* **JDBC事务**
+  * spring-mybatis.xml文件中：
   * <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <property name="dataSource" ref="dataSource" />
-        </bean>
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
-### Java持久化API事务（JPA）
 
-* spring-mybatis.xml文件中：
-  * <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-            <property name="sessionFactory" ref="sessionFactory" />
-        </bean>
+
+* **Java持久化API事务（JPA）**
+  * spring-mybatis.xml文件中：<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
 * JpaTransactionManager只需要装配一个JPA实体管理工厂（javax.persistence.EntityManagerFactory接口的任意实现）。JpaTransactionManager将与由工厂所产生的JPA EntityManager合作来构建事务。
 
-### Java原生API事务
 
-* 适用：**跨越多个事务管理源；入多个不同数据源**
-* spring-mybatis文件中：
+
+* **Java原生API事务**
+  * 适用：跨越多个事务管理源；入多个不同数据源
+  * spring-mybatis文件中：
   * <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
-            <property name="transactionManagerName" value="java:/TransactionManager" />
-        </bean>
+        <property name="transactionManagerName" value="java:/TransactionManager" />
+    </bean>
 
 
 

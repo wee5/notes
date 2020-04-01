@@ -1,8 +1,13 @@
 # GIT报错
 
-* **fatal: refusing to merge unrelated histories**
+## git
 
+* **fatal: refusing to merge unrelated histories**
   * 使用git merge origin/<branch> --allow unrelated histories（merge可换pull）
+* **git fetch命令后，没有任何反应**
+  * 本应该拉取远程仓库的一个分支；使用git branch --all命令，可以看到红色的刚拉取到的本地的远程仓库分支，再使用git merge，后面照常
+
+## github
 
 * ##### We found potential security vulnerabilities in your dependencies.
 
