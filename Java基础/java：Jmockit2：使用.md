@@ -63,6 +63,7 @@
 
 - 所有实例所有方法：**@Mocked**
   - 所有实例被mock；未录制方法返回默认值
+  - **mocked可以作用在测试类成员变量，测试类方法参数，Expectations中**
 - 指定实例所有方法：**@Injectable**
   - 被mock的实例，未录制方法返回默认值；未被mock的实例，调用原始方法
 - 实例级别的部分方法：**@new Expectations（personService）**
@@ -169,7 +170,7 @@
                   man.method("something");
                   times=1;
                   man.method2("s");
-                  times=1;//只计算被mock类或实例的次数
+                  times=1;//不计算new出来的对象，对象都不是同一个
               }
           };
       }
