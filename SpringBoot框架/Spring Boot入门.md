@@ -1,12 +1,8 @@
-# Spring Boot入门
+# Spring Boot入门1：简介
 
-## Spring Boot简介
-
-简化spring应用开发的框架
-
-整个spring技术栈的大整合
-
-J2EE开发的一站式解决方案
+* 简化spring应用开发的框架
+* 整个spring技术栈的大整合
+* J2EE开发的一站式解决方案
 
 **优点：**
 
@@ -49,6 +45,8 @@ J2EE开发的一站式解决方案
 * spring框架
 * maven
 * idea
+
+
 
 # 环境约束
 

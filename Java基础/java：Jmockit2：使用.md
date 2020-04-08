@@ -77,7 +77,7 @@
   - COllectionUtils.isEmpty（（Collection<?>） any）；
   - result=true；}}
 - mock私有变量和局部方法
-  - new Expectations（类名）{{
+  - **new Expectations（personService）**{{
   - Deencapsulation.setField（类名，变量名，变量值）；
   - Deencapsulation.invoke（类名，方法名，参数）；
   - result=返回值；
