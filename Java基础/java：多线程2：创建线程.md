@@ -12,36 +12,38 @@
 
   * 两步：启动线程；调用run方法
 
-* public class ThreadDemo1 {
-
-      public static void main(String[] args) {
-          
-          //创建两个线程
-          ThreadDemo td = new ThreadDemo("zhangsan");
-          ThreadDemo tt = new ThreadDemo("lisi");
-          //执行多线程特有方法，如果使用td.run();也会执行，但会以单线程方式执行。
-          td.start();
-          tt.start();
-          //主线程
-          for (int i = 0; i < 5; i++) {
-              System.out.println("main" + ":run" + i);
-          }
-      }
+* ```java
+  public class ThreadDemo1 {
+  	public static void main(String[] args) {
+      	//创建两个线程
+      	ThreadDemo td = new ThreadDemo("zhangsan");
+      	ThreadDemo tt = new ThreadDemo("lisi");
+      	//执行多线程特有方法，如果使用td.run();也会执行，但会以单线程方式执行。
+      	td.start();
+      	tt.start();
+      	//主线程
+      	for (int i = 0; i < 5; i++) {
+          	System.out.println("main" + ":run" + i);
+      	}
+  	}
   }
+  
   //继承Thread类
   class ThreadDemo extends Thread{
-      
-      //设置线程名称
-      ThreadDemo(String name){
-          super(name);
-      }
-      //重写run方法。
-      public void run(){
-          for(int i = 0; i < 5; i++){
-          System.out.println(this.getName() + "：run" + i);　　//currentThread()  获取当前线程对象（静态）。  getName（） 获取线程名称。
-          }
-      }
+  	//设置线程名称
+  	ThreadDemo(String name){
+      	super(name);
+  	}
+  	//重写run方法。
+  	public void run(){
+      	for(int i = 0; i < 5; i++){
+      	System.out.println(this.getName() + "：run" + i);　　//currentThread()  获取当前线程对象（静态）。  getName（） 获取线程名称。
+      	}
+  	}
   }
+  ```
+
+  ​    
 
 
 
@@ -59,7 +61,7 @@
 
 * 调用Thread类的start方法开启线程，并调用Runable接口子类的run方法
 
-* ```
+* ```java
   public class RunnableDemo {
       public static void main(String[] args) {
           RunTest rt = new RunTest();
@@ -91,10 +93,15 @@
 ## 通过Callable和Futrue创建线程
 
 * 定义类实现Callable接口，并实现call方法，该方法将作为线程执行体，且具有返回值
+
 * 创建Callable实现类的实例，使用FutrueTask类进行包装Callable对象，FutrueTask对象封装类Callable对象的call()方法的返回值
+
 * 使用FutrueTask对象作为Thread对象启动新线程
+
 * 调用FutrueTask对象的get()方法获取子线程执行结束后的返回值
-* public class CallableFutrueTest {
+
+* ```java
+  public class CallableFutrueTest {
       public static void main(String[] args) {
           CallableTest ct = new CallableTest();                        //创建对象
           FutureTask<Integer> ft = new FutureTask<Integer>(ct);        //使用FutureTask包装CallableTest对象
@@ -127,6 +134,9 @@
           return i;
       }
   }
+  ```
+
+  
 
 
 

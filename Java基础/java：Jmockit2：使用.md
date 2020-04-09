@@ -37,25 +37,27 @@
 
 ## 基本使用
 
-- @Test
+- ```java
+  @Test
   public void mockProcessTest(final @Mocked PersonService target){
-  //录制预期行为
-  new Expectations(){
-  {
-  target.showName(anyString);
-  result = "test1";
+  	//录制预期行为
+  	new Expectations(){
+  		{
+  			target.showName(anyString);
+  			result = "test1";
+  		}
+  	};
+  	//测试代码
+  	Assert.assertTrue("test1".equals(target.showName("test2")));
+  	//验证
+  	new Verifications(){
+  		{
+  			target.showName("test1");
+  			times = 0; //执行了0次。参数一致的才会计数
+  		}
+  	};
   }
-  };
-  //测试代码
-  Assert.assertTrue("test1".equals(target.showName("test2")));
-  //验证
-  new Verifications(){
-  {
-  target.showName("test1");
-  times = 0; //执行了0次。参数一致的才会计数
-  }
-  };
-  }
+  ```
 
 
 
@@ -98,10 +100,9 @@
 
 ## 代码展示
 
-* ```
+* ```java
   public class PersonTest {
-  
-      @Mocked
+  	@Mocked
       Person person;
   
       @Test
@@ -146,7 +147,7 @@
   }
   ```
 
-- ```
+- ```java
   public class ManTest {
   
       @Injectable

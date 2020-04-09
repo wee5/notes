@@ -30,26 +30,26 @@ main{
 
 相当于
 
+```java
 Main{ 
     Connection con=null; 
     try{ 
         con = getConnection(); 
         con.setAutoCommit(false); 
-
         //方法调用
-        methodB(); 
-    
-        //提交事务
-        con.commit(); 
-    } Catch(RuntimeException ex) { 
-        //回滚事务
-        con.rollback();   
-    } finally { 
-        //释放资源
-        closeCon(); 
-    } 
-} 
+    	methodB(); 
 
+    	//提交事务
+    	con.commit(); 
+	} Catch(RuntimeException ex) { 
+    	//回滚事务
+    	con.rollback();   
+	} finally { 
+    	//释放资源
+    	closeCon(); 
+	} 
+}
+```
 
 
 Spring保证在methodB方法中所有的调用都获得到一个相同的连接。在调用methodB时，没有一个存在的事务，所以获得一个新的连接，开启了一个新的事务。 
@@ -57,6 +57,7 @@ Spring保证在methodB方法中所有的调用都获得到一个相同的连接�
 
 执行效果相当于：
 
+```java
 main{ 
     Connection con = null; 
     try{ 
@@ -69,6 +70,7 @@ main{
         closeCon(); 
     }  
 } 
+```
 
 
 
@@ -132,6 +134,7 @@ main(){
 
 相当于
 
+```java
 main(){
     TransactionManager tm = null;
     try{
@@ -161,6 +164,7 @@ main(){
         //释放资源
     }
 }
+```
 
 
 
@@ -188,6 +192,7 @@ methodB(){
 
 如果单独调用methodB方法，则按REQUIRED属性执行。如果调用methodA方法，相当于下面的效果：
 
+```java
 main(){
     Connection con = null;
     Savepoint savepoint = null;
@@ -211,6 +216,7 @@ main(){
         //释放资源
     }
 }
+```
 
 
 
