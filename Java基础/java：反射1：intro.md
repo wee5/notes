@@ -6,6 +6,13 @@
 
 * 可以**在运行时加载、探知、使用编译期间完全未知的classes**；即Java程序可以加载一个运行时才得知名称的class，获悉其完整构造（不包括methods定义），并生成其对象实体（newInstance）或对其fields设值，或**唤起**（invoke）其methods方法
 * 方法的申明和定义：申明不包括方法体，定义包括方法体
+* **反射机制操作的是.calss文件**
+* 反射机制的应用：
+  * 动态代理
+  * 控制反转IOC，利用配置文件
+* 获得字节码对象的方法
+  * Class.forName("完全限定名");
+  * instance.getClass();得到实例instance类型的字节码对象
 
 
 

@@ -62,8 +62,8 @@
     
     	@Override
     	public int findBookPriceByIsbn(String isbn) {
-        	String sql = "SELECT price FROM book WHERE isbn = ?";
-    		return JdbcTemplate.queryForObject(sql, Integer.class, isbn);
+            String sql = "SELECT price FROM book WHERE isbn = ?";
+            return JdbcTemplate.queryForObject(sql, Integer.class, isbn);
     	}
     
     	@Override

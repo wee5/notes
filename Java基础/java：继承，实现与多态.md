@@ -1,6 +1,4 @@
-# java：类的类型
-
-
+# java：继承，实现与多态
 
 ## 类和对象
 
@@ -40,5 +38,55 @@
 
 ## 接口类
 
+* 什么是接口类
+
+  * 接口类无方法体，规定了方法的方法名，返回类型，参数类型和参数数量；接口类不能实例化
+
+* 接口类的作用
+
+  * **确定类型，但不确定方法体**
+
+* 接口类应用
+
+  * ```java
+    interface Animal
+        
+    class Dog implements Animal
+    
+    Animal some=new Dog();//多态
+    /*
+    some只是变量名，一个指向；同时some也是一个实例
+    some的类型为Animal，它的属性和方法由实现类Dog实现，包括变量，重写方法，和特有方法（即Dog的所有内容）
+    */
+    ```
+
+* 接口在jdk中的应用
+
+  * ```java
+    interface Runnable
+        
+    class Mythread implements Runnable	//为什么java中总出现需要必须实现某个接口才可以用，看下面
+    	@Override
+        run（）{}；//重写run方法
+        
+    Runnable runnable=new MyThread();//多态，用实现类实例化接口
+    runnable.start();//以多线程方式执行
+    
+    class.method(Runnable runnable)
+    /*
+    假设jdk中有某一个类的某一个方法，参数为Runnable类型，这是jdk预先写好的
+    jdk将Runnable作接口，而不是类
+    因为方法体不能确定，不能预先知道线程中要执行什么
+    所以让开发者去实现Runnable接口，需要执行什么，重写的run方法里就写什么
+    即jdk在预先编写好工具时，不知道开发者的具体使用类，于是利用接口实现机制，确定类型，方法名，参数和返回值，其他工具需要时使用接口类，而具体实现方法，让开发者编写，然后实现接口，再利用多态
+    */
+    ```
+
+    
+
+
+
+
+
 * 规定方法（方法名，返回值，参数），不包含方法体
-* 好处：在程序中可能预置调用某个类的方法，即类需要程序员设计，但是方法名是固定的，如实现runable接口，
+* 好处：在程序中可能预置调用某个类的方法，即类需要程序员设计，但是方法名是固定的，如实现runable接口
