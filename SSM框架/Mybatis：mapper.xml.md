@@ -10,6 +10,7 @@
 
 **动态sql标签**
 
+```xml
 <if>		sql语句拼接，依次判选（语意处理）
 		select * from user where 1=1	<if test="userName!=null">and userName=#{userName}</if>
 
@@ -33,6 +34,7 @@
 
 <sql>		封装sql语句，同时可包含标签	<sql  id="A"><if  test="id!=null">id=#{id}</sql>
 <include>		调用<sql>标签封装的sql语句		<include   refid="A"  />
+```
 
 
 
@@ -56,6 +58,7 @@
   ```
 
 * 作用：去下划线，大小写转化
+
   * Parent_id（数据库）——>parentid（实体类）
 
 **标签映射**

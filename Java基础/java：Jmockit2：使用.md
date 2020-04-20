@@ -13,18 +13,20 @@
 
   * 如果是TestNG 6.2+ 或者 JUnit 5+， 没有位置限制
 
-  * 		<dependency>
-          			<groupId>org.jmockit</groupId>
-          			<artifactId>jmockit</artifactId>
-          			<version>1.30</version>
-          			<scope>test</scope>
-          		</dependency>
-          		<dependency>
-          			<groupId>junit</groupId>
-          			<artifactId>junit</artifactId>
-          			<version>4.11</version>
-          			<scope>test</scope>
-          		</dependency>
+  * ```xml
+    <dependency>
+      	<groupId>org.jmockit</groupId>
+      		<artifactId>jmockit</artifactId>
+      		<version>1.30</version>
+      		<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.11</version>
+    	<scope>test</scope>
+    </dependency>
+    ```
 
 * 基本流程：
   * **record**：录制；设置将要被调用的方法和返回值

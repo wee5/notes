@@ -2,10 +2,10 @@
 
 * 自定义注解类编写的规则：
 
-  * Annotation型定义为@interface，所有的Annotation会自动继承java.lang.Annotation这一接口，并且不能再继承别的类或接口
+  * Annotation型定义为@interface，所有的Annotation会自动继承java.lang.Annotation这一接口，**并且不能再继承别的类或接口**
   * 参数成员只能用public或default访问权修饰
-  * 参数成员只能用基本类型byte，short，char，int，long，float，double，boolean八种基本数据类型和String，Enum，Class，annotations等数据类型，以及一些类型的数组
-  * 要获取类方法和字段的注解信息，必须通过java反射技术来获取Annotation对象，除此之外没有别的获取注解对象的方法
+  * 参数成员只能用**基本类型**byte，short，char，int，long，float，double，boolean八种基本数据类型和**String，Enum，Class，annotations**等数据类型，以及**一些类型的数组**
+  * 要获取类方法和字段的注解信息，必须通过**java反射技术来获取Annotation对象**，除此之外没有别的获取注解对象的方法
   * 注解也可以没有定义成员，不过这样注解就没用了
   * 自定义注解需要使用到元注解
 
@@ -53,15 +53,18 @@
     *   @revision          $Id
     */
     public class Test_1{
+        
         /**
          * 被注释的三个方法
          */
         @Test(id = 1, description = "hello method1")
         public void method1() {
         }
+        
         @Test(id = 2)
         public void method2() {
         }
+        
         @Test(id = 3, description = "last method3")
         /**
          * 解析注释，将Test_1类所有被注解方法的信息打印出来

@@ -4,6 +4,15 @@
 
 
 
+## 原理
+
+* 一个类Tank时，调用Tank.move();
+* Tank类实现Movable接口时，调用(Movable)target.move();
+* Tank类和TimeProxy类实现Movable接口时，调用(Movable)target.move();
+* 因为类型和方法都是固定的，不影响他们在被依赖类的内部调用代码（不同的只是变量名，而变量名是任意的）
+
+
+
 ## 示例
 
 * 描述：一个可以移动的坦克，它的主要方法是 `move() `，但是我们需要记录它移动的时间，以及在它移动前后做日志
@@ -64,7 +73,7 @@
 
   * ```java
     public class TankLogProxy implements Movable{ //  日志代理对象
-        private Tank tank;
+        private Movable tank;
     
         public TankLogProxy(Tank tank) {
             this.tank = tank;

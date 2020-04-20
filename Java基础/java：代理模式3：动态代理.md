@@ -1,6 +1,6 @@
 # java：代理模式3：动态代理
 
-* 动态代理优势：静态代理中，一个目标类需要几个代理类，就编写几个代理类；若同样的代理，代理了不同的两个目标类，则代理类内容重复，代码冗余；这是静态代理的劣势，也是动态代理的优势，动态代理可以解决
+* 动态代理优势：静态代理中，一个目标类需要几个代理类，就编写几个代理类；若同样的代理，代理了不同的两个目标类，则**代理类内容重复**，代码冗余；这是静态代理的劣势，也是动态代理的优势，动态代理可以解决
 
 
 
@@ -55,7 +55,7 @@
     }
     ```
 
-* MyTimeProxyInvocationHandler类
+* MyTimeProxyInvocationHandler类：即动态代理类，需要实现方法（将需要做的事写在方法内）；因为参数是Object，所以可以代理不同的类
 
   * ```java
     public class MyTimeProxyInvocationHandler implements InvocationHandler {
@@ -115,12 +115,13 @@
                     tank.getClass().getInterfaces(),
                     myInvocationHandler
             );
-    
+            /*
+            *Proxy.newProxyInstance(*,*,*)内部会调用myInvocationHandler.invoke(*,*,*)
+            *invoke方法的参数，在newProxyInstance内部通过newProxyInstance的传参获得
+            */
             tankProxy.move();
-    
-            System.out.println("--------------------");
-            System.out.println("--------------------");
-    
+          
+            
             //代理飞机，原理同上
             Flyable plane = new Plane();
             myInvocationHandler = new MyTimeProxyInvocationHandler(plane);
