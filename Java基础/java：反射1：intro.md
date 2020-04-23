@@ -25,7 +25,7 @@
 ## .class文件
 
 * java源码的转化
-  * java源码被**编译**成.class文件字节码
+  * java源码被**编译**成.class字节码文件
   * jvm执行**解释**字节码给计算机
   * 计算机将结果呈现给用户
   * 因此java并不是编译机制，而是解释机制
@@ -35,6 +35,20 @@
 * 查看.class文件
   * 在.class文件路径下打开cmd
   * 执行javap -c XXX.class查看
+
+
+
+## 获得字节码对象的三种方式
+
+* ```java
+  Class class2=TestEnum.class;//静态属性获取
+  Class class1=new TestEnum().getClass();//对象方法获取
+  Class class3=Class.forName(完全限定名)//静态方法获取
+  ```
+
+* **字节码对象也可以称为类对象，即Class是类的类型**
+
+
 
 ### 源码和字节码
 

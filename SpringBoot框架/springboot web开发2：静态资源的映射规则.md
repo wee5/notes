@@ -2,40 +2,38 @@
 
 
 
-- ```java
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-      if (!this.resourceProperties.isAddMappings()) {
-          logger.debug("Default resource handling disabled");
-      } else {
-          Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
-          CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
-          if (!registry.hasMappingForPattern("/webjars/**")) {
-              this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{"/webjars/**"}).addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"}).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
-          }
-  
-          String staticPathPattern = this.mvcProperties.getStaticPathPattern();
-          if (!registry.hasMappingForPattern(staticPathPattern)) {
-              this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern}).addResourceLocations(WebMvcAutoConfiguration.getResourceLocations(this.resourceProperties.getStaticLocations())).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
-          }
-  
-      }
-  }
-  
-  //配置欢迎页
-  @Bean
-  public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext, FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
-      WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext), applicationContext, this.getWelcomePage(), this.mvcProperties.getStaticPathPattern());
-      welcomePageHandlerMapping.setInterceptors(this.getInterceptors(mvcConversionService, mvcResourceUrlProvider));
-      return welcomePageHandlerMapping;
-  }
-  
-  ```
+## 映射（都是默认配置）
 
-- 所有**/webjars/**xx，都去classpath:/META-INF/resource/webjars/xx找资源：
+- **/webjars/xx，映射到classpath:/META-INF/resource/webjars/xx**：
 
-  - webjars：以jar包的方式引入静态资源；参考http://www.webjars.org/
+  - ```java
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        if (!this.resourceProperties.isAddMappings()) {
+            logger.debug("Default resource handling disabled");
+        } else {
+            Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+            CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
+            /* 请求映射 */
+            if (!registry.hasMappingForPattern("/webjars/**")) {
+                this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{"/webjars/**"}).addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"}).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+            }
+    
+            String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+            if (!registry.hasMappingForPattern(staticPathPattern)) {
+                this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern}).addResourceLocations(WebMvcAutoConfiguration.getResourceLocations(this.resourceProperties.getStaticLocations())).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+            }
+    
+        }
+    }
+    ```
 
-- 示例：
+  - webjars：以jar包的方式引入静态资源；将前端框架以依赖的形式引入；
+
+  - 作用：**前端页面请求前端框架**
+
+  - 参考http://www.webjars.org/
+
+- 示例：（以jquery为例）
 
   - ```xml
         <!-- 引入jquery依賴jar -->
@@ -50,7 +48,9 @@
 
   - 如localhost:8080**/webjars/**jquery/3.3.1/jquery.js请求，映射到**classpath:/META-INF/resource/webjars/**jquery/3.3.1/jquery.js，即图中jquery.js文件
 
-- **/xx** 访问当前项目的任何资源，（静态资源的文件夹）
+
+
+- **/xx映射到**，（访问当前项目的任何资源；静态资源的文件夹）
 
   - ```java
     "classpath:/META-INF/resources"
@@ -69,3 +69,34 @@
   - 如localhost:8080/映射到index页面
 
 - 所有的**/favicon.ico 都是在静态资源文件下找：
+
+
+
+* **欢迎页的映射**
+
+  * ```java
+    //配置首页映射
+    @Bean
+    public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext, FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
+        WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext), applicationContext, this.getWelcomePage(), this.mvcProperties.getStaticPathPattern());
+        welcomePageHandlerMapping.setInterceptors(this.getInterceptors(mvcConversionService, mvcResourceUrlProvider));
+        return welcomePageHandlerMapping;
+    }
+    ```
+
+  * **/xx映射到静态资源文件夹下的所有index.html**
+
+
+
+* **应用图标映射**：springboot2.2版本后不支持
+
+
+
+* **设置和静态资源有关的参数；缓存时间等**
+
+  * ```java
+    @ConfigurationProperties(prefix = "spring.resources",ignoreUnknownFields = false)
+    public class ResourceProperties {
+    ```
+
+  * 

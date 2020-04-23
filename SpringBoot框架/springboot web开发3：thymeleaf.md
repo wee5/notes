@@ -34,10 +34,11 @@
 * ```java
   @ConfigurationProperties(prefix = "spring.thymeleaf")
   public class ThymeleafProperties {
+      
+      <!-- Thymeleaf自动渲染，classpath:/templates/路径下的，以.html为后缀的文件 -->
       private static final Charset DEFAULT_ENCODING;
       public static final String DEFAULT_PREFIX = "classpath:/templates/";
       public static final String DEFAULT_SUFFIX = ".html";
-      <!-- Thymeleaf自动渲染，classpath:/templates/路径下的，以.html为后缀的文件 -->
   ```
 
 ### 使用
@@ -69,6 +70,7 @@
 ### 语法规则
 
 * **th**：指定任意原生属性的值
+
   * ![avatar](图片引用\Snipaste_2020-04-19_11-41-45.png)
 
 * 表达式
