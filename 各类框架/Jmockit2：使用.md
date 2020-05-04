@@ -1,4 +1,4 @@
-# java：Jmockit2：使用
+# Jmockit2：使用
 
 * 使用JMockit API来mock被依赖的代码，从而进行隔离测试。
 

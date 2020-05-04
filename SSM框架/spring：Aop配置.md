@@ -1,12 +1,13 @@
-# Spring Aop配置
+# spring：Aop配置
+
+
 
 * 需要jar包：
 
 ## xml配置实现
 
 * 示例（命名空间略，下图中为‘定义切面’，而非‘定义增强’）
-
-![1576684118703](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1576684118703.png)
+  * ![avatar](图片引入\1576684118703.png)
 
 | aop             | method        | returning/throwing |
 | --------------- | ------------- | ------------------ |
@@ -32,7 +33,7 @@
 
 * 编写切面类
 
-* ```
+* ```java
   @Aspect
   public class MyAspect {
   
@@ -59,11 +60,13 @@
   } 
   ```
 
+* 
+
 * spring ioc配置文件（命名空间略）
 
-* ```
+* ```xml
   <!-- 启动@aspectj的自动代理支持-->
-      <aop:aspectj-autoproxy />
+  <aop:aspectj-autoproxy />
   <!--定义aspect类-->
   <bean .../>
   
@@ -73,7 +76,7 @@
 
 * 切入点函数
 
-* ```
+* ```java
   <!--定义切点函数-->
   @Pointcut("execution(* com.zejian.spring.springAop.dao.UserDao.addUser(..))")
   private void myPointcut(){}
@@ -98,7 +101,7 @@
 
 * 参数也作为’切入点指示符‘去匹配连接点，表示包含或不仅包含userId的连接点
 
-* ``` 
+* ``` java
   @Before("execution(public * com.zejian..*.addUser(..)) && args(userId,..)")  
   public void before(int userId) {  
       //调用addUser的方法时如果与addUser的参数匹配则会传递进来会传递进来
@@ -116,10 +119,10 @@
 
 * 格式:实现Ordered，并重写方法getOrder（）
 
-* * ```
-    @Override
-        public int getOrder() {
-            return 0;
-        }
-    ```
+* ```java
+  @Override
+  public int getOrder() {
+      return 0;
+  }
+  ```
 

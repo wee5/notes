@@ -10,7 +10,7 @@
 
 * XML配置
 
-  * ```java
+  * ```xml
     <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -22,11 +22,14 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"><import resource="applicationContext-db.xml" />
-    
+    	
+        <!-- 扫描事物类 -->
     	<context:component-scan base-package="com.springinaction.transaction"></context:component-scan>
     
+        <!-- 开启事物注解 -->
     	<tx:annotation-driven transaction-manager="txManager"/>
     
+        <!-- jdbc事物管理器 -->
     	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         	<property name="dataSource" ref="dataSource" />
     	</bean>
@@ -36,11 +39,10 @@
 
     
 
-* 使用的类 
+* 代码
 
   * ```java
-    BookShopDao
-    
+    //BookShopDao
     public interface BookShopDao {
         // 根据书号获取书的单价
         public int findBookPriceByIsbn(String isbn);
@@ -52,8 +54,7 @@
     ```
 
   * ```java
-    BookShopDaoImpl
-    
+    //BookShopDaoImpl
     @Repository("bookShopDao")
     public class BookShopDaoImpl implements BookShopDao {
         
@@ -93,16 +94,14 @@
     ```
 
   * ```java
-    BookShopService
-    
+    //BookShopService
     public interface BookShopService {
          public void purchase(String username, String isbn);
     }
     ```
 
   * ```java
-    BookShopServiceImpl
-    
+    //BookShopServiceImpl
     @Service("bookShopService")
     public class BookShopServiceImpl implements BookShopService {
     
@@ -116,11 +115,11 @@
      	* REQUIRES_NEW：使用自己的事务，调用的事务方法的事务被挂起。
      	*
      	* 2.使用isolation 指定事务的隔离级别，最常用的取值为READ_COMMITTED
-     	* 3.默认情况下 Spring 的声明式事务对所有的运行时异常进行回滚，也可以通过对应的属性进行设置。通常情况下，默认值即可。
+     	* 3.默认情况下 Spring 的声明式事务对所有的运行时异常进行回滚，也可以通过对应的属性进行设置。通常情况下，默认值即可
      	* 4.使用readOnly 指定事务是否为只读。 表示这个事务只读取数据但不更新数据，这样可以帮助数据库引擎优化事务。若真的是一个只读取数据库值得方法，应设置readOnly=true
-     	* 5.使用timeOut 指定强制回滚之前事务可以占用的时间。
+     	* 5.使用timeOut 指定强制回滚之前事务可以占用的时间
      	*/
-    	@Transactional(propagation=Propagation.REQUIRES_NEW,isolation=Isolation.READ_COMMITTED,noRollbackFor={UserAccountException.class},readOnly=true, timeout=3)
+    	@Transactional(propagation=Propagation.REQUIRED_NEW,isolation=Isolation.READ_COMMITTED,noRollbackFor={UserAccountException.class},readOnly=true, timeout=3)
     	@Override
     	public void purchase(String username, String isbn) {
         	//1.获取书的单价
@@ -134,16 +133,14 @@
     ```
 
   * ```java
-    Cashier
-    
+    //Cashier
     public interface Cashier {
         public void checkout(String username, List<String>isbns);
     }
     ```
 
   * ```java
-    CashierImpl
-    
+    //CashierImpl
     //CashierImpl.checkout和bookShopService.purchase联合测试了事务的传播行为
     @Service("cashier")
     public class CashierImpl implements Cashier {
@@ -162,8 +159,7 @@
     ```
 
   * ~~~java
-    BookStockException
-    
+    //BookStockException
     public class BookStockException extends RuntimeException {
     
     	```
@@ -199,8 +195,7 @@
     ~~~
 
   * ```java
-    UserAccountException
-    
+    //UserAccountException
     public class UserAccountException extends RuntimeException {
     
     	private static final long serialVersionUID = 1L;
@@ -233,8 +228,7 @@
     ```
 
   * ```java
-    测试类
-    
+    //测试类
     public class SpringTransitionTest {
     	private ApplicationContext ctx = null;
     	private BookShopDao bookShopDao = null;

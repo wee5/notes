@@ -1,4 +1,4 @@
-# java：Jmockit3：@Mocked和@Injectable
+# Jmockit3：@Mocked和@Injectable
 
 * **@Mocked作用于测试类成员**
 
@@ -16,7 +16,6 @@
   	}
   }
   ```
-  
 
 * **@Mocked作用于测试用例参数**
 

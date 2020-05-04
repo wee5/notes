@@ -47,7 +47,7 @@
 
 * 开启：
 
-  ```
+  ```xml
   Mybatis配置文件中添加：
   <!-- 是否开启自动驼峰命名规则（camel case）映射， -->
   <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -67,7 +67,7 @@
 
 * 开启：
 
-  ```
+  ```xml
   <!-- type指向你的javabean类，id可以自定义 -->
   <resultMap type="com.Category" id="category">
       <!-- property对应实体类的属性名称，column为数据库结果集的列的名称 -->

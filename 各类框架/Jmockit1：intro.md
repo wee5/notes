@@ -1,4 +1,4 @@
-# java：Jmockit1：intro
+# Jmockit1：intro
 
 * JMockit是用来帮助开发人员编写测试程序的一组工具和API，完全基于java 5 ee的java.lang.instrument包开发，内部使用ASM库来动态修改java的字节码，使得java这种静态语言可以想动态脚本语言一样动态设置被Mock对象私有属性，模拟静态、私有方法行为等
 * 优势：即能mock接口、抽象类、final类、注解以及枚举等

@@ -1,6 +1,6 @@
 # redis2：命令
 
-- redis客户端基本语法：$ redis-cl
+- redis客户端基本语法：$ redis-cli
 
 ## 开启本地服务和连接redis
 
@@ -37,7 +37,7 @@
 | **string**      | set key value                                                | get key                                                      | del key                                                      |
 |                 | mset key1 value1 key2 value2                                 | mget key1 key2                                               |                                                              |
 | **hash**        | hset key field value（单个设值）                             | hget key field                                               | hdel key field                                               |
-|                 | hmset key field1 value1 field2 value2（多个设值）            |                                                              | hdel key field1 field2                                       |
+|                 | hmset key field1 value1 field2 value2（多个设值）            | hgetall key（取所有）                                        | hdel key field1 field2                                       |
 |                 | hsetnx key field value(无值则设)                             |                                                              |                                                              |
 | **list**        | lpush/rpush key value1 value2                                | lindex key index（索引查询）                                 | rpop/lpop key（移除列表最后一个元素，返回移除元素）          |
 | **set**         | sadd key member1 member2（集合添加成员）                     | smembers key（返回所有成员）                                 | spop key（移除并返回一个随机成员）                           |
@@ -52,3 +52,19 @@
 | **事务**        | multi（标记事务开始）                                        | exce（执行所有事务块内的命令）                               | discard（取消事务，放弃执行事务块内的所有命令）              |
 |                 | watch key1 key2（监视一个或多个key；事务执行之前，这些key被其他命令改动，事务会被打断） |                                                              | unwatch（取消watch命令对所有key的监视）                      |
 |                 |                                                              |                                                              |                                                              |
+
+* hash实例
+
+  * ```
+    127.0.0.1:6379>  HMSET runoobkey name "redis tutorial" description "redis basic commands for caching" likes 20 visitors 23000
+    OK
+    127.0.0.1:6379>  HGETALL runoobkey
+    1) "name"
+    2) "redis tutorial"
+    3) "description"
+    4) "redis basic commands for caching"
+    5) "likes"
+    6) "20"
+    7) "visitors"
+    8) "23000"
+    ```
