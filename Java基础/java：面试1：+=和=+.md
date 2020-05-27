@@ -4,25 +4,25 @@
 
 ## a+=b 等同于 a=（a的类型）a+b
 
-* ```
+* ```java
   byte i=100;
   short l=100;
   System.out.println(i+=l);//结果-56
   ```
 
-* ```
+* ```java
   byte i=100;
   short l=1000;
   System.out.println(i+=l);//结果76
   ```
 
-* ```
+* ```java
   byte i=100;
   short l=1000;
   System.out.println(l+=i);//结果1100
   ```
 
-* ```
+* ```java
   byte i=100;
   System.out.println(i+=1000);
   ```

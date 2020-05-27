@@ -40,7 +40,7 @@
 
 - **add：适用范围和语法同统一约束一样**
 - **modify和change**：**适用范围和语法同字段约束一样，但不支持check，外键**
-  - **Key：包含primary key，foreign key，unique，Key不受重置影响**
+  - **Key：包含primary key，foreign key，unique（Key不受重置影响）**
   - **重置：Null为YES；Default为NULL；Extra为无**（Extra包含auto_increment）
     - **主键的重置：**主键非空特性，其Null不受重置影响，总为No；一旦设置过主键default（除null），主键Default受到重置影响，变为对应类型的默认值，而不是NULL，同样因为主键非空特性；
   - **区别：**change可以**修改字段名**；字段类型和长度都可以改；

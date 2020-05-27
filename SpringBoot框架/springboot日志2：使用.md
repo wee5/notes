@@ -21,6 +21,7 @@
     logging.pattern.console=%d{yyyy-mm-dd HH:mm:ss.SSSS} [%thread] %-5level %logger{50} - %msg%n
     #文件中输出日志的方式
     logging.pattern.file=%d{yyyy-mm-dd HH:mm:ss}_[%thread] %-5level %logger{50} 打印：%-5msg%n
+    #若是yml作配置文件，格式需要用单引号括起来
     
     #日志输出格式
     #	%d：日期时间
