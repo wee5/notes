@@ -2,5 +2,5 @@
 什么是Servlet环境？     可以开发，测试，运行Servlet的地方
 什么是Apache Tomcat？   是一种Web应用服务器
 
-Apache Tomcat和Java Servlet的关系？    Apache Tomcat 是一款 Java Servlet 和 JavaServer Pages 技术的开源软件实现，
+Apache Tomcat和Java Servlet的关系？    Apache Tomcat 是一款 Java Servlet 和 JavaServer Pages(JSP) 技术的开源软件实现，
     可以作为测试 Servlet 的独立服务器，而且可以集成到 Apache Web 应用服务器
