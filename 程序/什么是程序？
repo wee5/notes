@@ -15,4 +15,4 @@ zookeeper程序和用zookeeper相关jar包开发的程序有什么区别？
     zookeeper程序的特点是通过脚本启动zookeeper server和zookeeper client，zookeeper client往往以shell形式提供给用户
     
 以zookeeper（由Java开发）为例，描述OS到程序的接口流程图
-    OS：程序接口 --> JDK --> zookeeper包 --> 程序
+    OS：程序接口 --> JDK --> zookeeper包 --> 程序：zookeeper server，zookeeper client，自己开发的程序
