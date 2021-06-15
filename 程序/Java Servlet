@@ -4,3 +4,5 @@
 
 Apache Tomcat和Java Servlet的关系？    Apache Tomcat 是一款 Java Servlet 和 JavaServer Pages(JSP) 技术的开源软件实现，
     可以作为测试 Servlet 的独立服务器，而且可以集成到 Apache Web 应用服务器
+    
+JSP技术的目的？       为了支持HTML和XML页面的编写
