@@ -1,0 +1,29 @@
+判断json字符串？
+public boolean isJson(String str) {
+    try {
+        JSONObject.parse(str);
+        return true;
+    } catch (JSONException e) {
+        return false;
+    }
+}
+
+流程控制模板
+// 是否json字符串
+if(isJson(str)) {
+    try {
+        Object obj = JSONObject.parse(str);
+        if (obj instanceof JSONObject) {
+            // 是json对象
+        }
+        else if (obj instanceof JSONArray) {
+            // 是json数组
+        }
+        else{
+            // 是boolean类型（"true"是json字符串，但不是json数组和json对象）
+        }
+    }
+    catch (JSONException e) {
+        throw new NotJsonStrException(e.getMessage());
+    }
+}
