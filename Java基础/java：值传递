@@ -1,0 +1,73 @@
+什么是值传递和引用传递？
+    值传递：传递副本，副本包含数值（实际值或地址）
+    引用传递：传递一个引用（这里说的比较模糊）
+    
+    值传递和引用传递是C++中的概念，不是java的概念
+    java中都是值传递，传递地址也属于值传递(地址也是数值）
+
+
+java值传递的重点，是赋值操作和方法参数传递，而方法参数传递本质就是赋值操作
+
+
+java赋值操作（等号=）对于基本类型和引用类型在内存中的不同表现
+    基本类型赋值给变量时，直接改变变量的值
+    引用类型赋值给变量时，改变变量的引用地址
+
+    // 变量i的内存包含的值，由10变为20；10的内存改变为20
+    int i = 10;
+    i = 20;
+    
+    // 变量i的内存的引用地址，由（"hello"的）地址变为（"world"）的地址；"hello"的内存未改变
+    String i = "hello";
+    i = "world";
+    
+    
+实例解析
+
+    /**
+    * num的值经过赋值操作，传递给value
+    * value的值变为10，value和num的值相同，但无关联
+    * value经过赋值操作，值由10变为100
+    * num的值未改变
+    */
+    void foo(int value) { // 方法传递基本类型
+        value = 100; // 赋值操作value包含的值由原值变为100，但原值未改变
+    }
+    int num = 10;
+    foo(num);
+
+    /**
+    * str的地址值经过赋值操作，传递给text
+    * text的值变为linux，str和text的地址值相同，值相同
+    * text经过赋值操作，地址值改变，值变为windows
+    * str的地址值未改变，值未变
+    */
+    void foo(String text) { // 方法传递引用类型
+        text = "windows"; // 赋值操作
+    }
+    String str = "linux";
+    foo(str);
+    
+    /**
+    * sb的地址值经过赋值操作，传递给builder
+    * builder的值变为StringBuilder实例，sb和builder的地址值相同，值相同
+    * builder调用自身方法，地址值不变，值改变
+    * sb和builder地址值相同，值因builder方法而改变
+    */
+    void foo(StringBuilder builder) { // 方法传递引用类型
+        builder.append("4"); // 非赋值操作，自身方法
+    }
+    StringBuilder sb = new StringBuilder("iphone");
+    foo(sb);
+
+    /**
+    * sb的地址值经过赋值操作，传递给builder
+    * builder的值变为StringBuilder实例，sb和builder的地址值相同，值相同
+    * builder经过赋值操作，地址值改变，值变为另一个StringBuilder实例
+    * sb地址值未变，值未变
+    */
+    void foo(StringBuilder builder) { // 方法传递引用类型
+        builder = new StringBuilder("ipad"); // 赋值操作
+    }
+    StringBuilder sb = new StringBuilder("iphone");
+    foo(sb); // sb 没有被改变，还是 "iphone"
