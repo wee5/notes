@@ -1,0 +1,24 @@
+T边界使用
+    T只有上边界，没有下边界
+    <T extends Object>
+    
+    
+?边界使用
+    ?有上边界，也有下边界
+    <? extends Object>
+    <? super Animal>
+    
+    
+泛型边界的含义
+    <? extends Object>：泛型为Object的子类
+    <? super Animal>：泛型为Animal的父类
+    
+    
+以ArrayList<E>为例，解读泛型边界
+    ArrayList<? extends Animal>：不能接收任何类型，读取的元素类型全是Animal
+    ArrayList<? super Animal>：可以接收Animal及其子类，读取元素类型全是Object
+    
+    super的意义：扩大泛型接收范围，保证写入时类型一致性，读出时类型为Object
+    extends的意义：扩大泛型接收范围，保证读出时类型一致性，无法写入
+    
+    上界通配符主要用于读数据，下界通配符主要用于写数据
