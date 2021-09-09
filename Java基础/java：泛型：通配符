@@ -1,0 +1,20 @@
+通配符的约定俗成
+    T：type，表示一个具体java类型
+    K：key，表示键
+    V：value，表示值
+    E：element，表示元素
+    ?：不确定的java类型
+    
+    字母通配符的含义只是习惯，本质没有区别
+    
+    
+T和?的区别
+    T在定义泛型时使用
+    ?在使用泛型时使用
+    
+    // 定义泛型类
+    class Clazz<T> {}
+    // 定义泛型方法
+    <T> void method1(T t) {}
+    // 使用泛型类，申明变量
+    ArrayList<?> list;
