@@ -10,11 +10,15 @@
     
 T和?的区别
     T在定义泛型时使用
+    
+        // 定义泛型类
+        class Clazz<T> {}
+        // 定义泛型方法
+        <T> void method1(T t) {}
+    
     ?在使用泛型时使用
     
-    // 定义泛型类
-    class Clazz<T> {}
-    // 定义泛型方法
-    <T> void method1(T t) {}
-    // 使用泛型类，申明变量
-    ArrayList<?> list;
+        // 使用泛型类，申明变量
+        ArrayList<?> list;
+        // 使用泛型类，申明参数类型
+        void method(ArrayList<? extends Object> list) {}
