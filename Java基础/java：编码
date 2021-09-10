@@ -1,0 +1,16 @@
+常见的编码格式分类
+    文件编码
+    编译编码
+    
+
+编码流程说明
+    .java文件（新增的） ——> (文件编码方式) ——> 二进制序列
+    二进制序列 ——> (文件编码方式) ——> .java文件（读取到的）
+    二进制序列 ——> （编译编码方式） ——> .class文件
+    
+    
+idea中编码设置
+    File-Settings-File Encodings：
+        Global Encoding：全局文件编码设置
+        Project Encoding：当前文件编码设置
+        
