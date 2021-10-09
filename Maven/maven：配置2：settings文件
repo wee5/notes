@@ -15,3 +15,4 @@ settings.xml中的顶级元素？
       <activeProfiles/>
     </settings>
     <!-- 详见 https://maven.apache.org/settings.html -->
+    <!-- 存储库和插件库的配置属于profile子元素 -->
