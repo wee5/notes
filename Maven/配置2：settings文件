@@ -1,0 +1,17 @@
+${maven.home}/conf/settings.xml和${user.home}/.m2/settings.xml同时存在时，以后者为主
+
+
+settings.xml中的顶级元素？
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+      <localRepository/>
+      <interactiveMode/>
+      <offline/>
+      <pluginGroups/>
+      <servers/>
+      <mirrors/>
+      <proxies/>
+      <profiles/>
+      <activeProfiles/>
+    </settings>
+    <!-- 详见 https://maven.apache.org/settings.html -->
