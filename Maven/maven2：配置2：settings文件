@@ -8,15 +8,16 @@ settings.xml中的顶级元素？
       <interactiveMode/>
       <offline/>
       <pluginGroups/>
-      <servers/>
-      <mirrors/>
-      <proxies/>
-      <profiles/>
+      <servers/>服务器（账号密码）
+      <mirrors/>镜像
+      <proxies/>代理
+      <profiles/>配置文件
          </profile>
-            </properties>
-            </repositories>
-            </pluginRepositories>
-      <activeProfiles/>
+            </activation>配置文件激活条件
+            </properties>属性
+            </repositories>仓库
+            </pluginRepositories>插件仓库
+      <activeProfiles/>激活配置文件
     </settings>
     <!-- 详见 https://maven.apache.org/settings.html -->
     <!-- 存储库和插件库的配置属于profile子元素 -->
