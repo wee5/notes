@@ -12,6 +12,9 @@ settings.xml中的顶级元素？
       <mirrors/>
       <proxies/>
       <profiles/>
+         </profile>
+            </repositories>
+            </pluginRepositories>
       <activeProfiles/>
     </settings>
     <!-- 详见 https://maven.apache.org/settings.html -->
